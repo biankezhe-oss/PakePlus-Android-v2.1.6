@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>无锡科振自控阀门有限公司 执行器报价助手</title>
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft Yahei", "PingFang SC", "SF Pro Display", sans-serif;}
+    body {
+      min-height:100vh;
+      margin:0;
+      padding:10px 8px; /* 大幅减小页面上下左右内边距 */
+      background: radial-gradient(circle at 10% 20%, #f8fbff 0%, #eef5ff 100%);
+      background-attachment: fixed;
+      overflow-x: hidden;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 25% 15%, rgba(59, 130, 246, 0.08) 0%, transparent 25%),
+        radial-gradient(circle at 75% 85%, rgba(14, 165, 233, 0.08) 0%, transparent 25%),
+        linear-gradient(to bottom, transparent, rgba(238, 245, 255, 0.8));
+      pointer-events: none;
+      z-index: -1;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: -1;
+    }
+    /* 容器：大幅减小内边距和最小高度 */
+    .container {
+      width:100%;
+      max-width:520px;
+      min-height:calc(100vh - 20px); /* 减小最小高度 */
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      padding:16px 18px; /* 大幅减小容器内边距 */
+      margin:0 auto;
+      display:flex;
+      flex-direction:column;
+      border-radius:20px; /* 轻微减小圆角 */
+      box-shadow: 
+        0 0 30px rgba(59, 130, 246, 0.08),
+        0 1px 3px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 20px;
+      padding: 1px;
+      background: linear-gradient(135deg, #60a5fa, #22d3ee, #60a5fa);
+      -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0.8;
+      z-index: -1;
+    }
+    /* 头部：减小间距和内边距 */
+    .header {
+      text-align:center;
+      margin:0 0 16px; /* 大幅减小底部外边距 */
+      padding-bottom:12px; /* 减小底部内边距 */
+      border-bottom:1px solid rgba(59, 130, 246, 0.2);
+      position:relative;
+    }
+    .header::after {
+      content: '';
+      position:absolute;
+      bottom:-1px;
+      left:50%;
+      transform:translateX(-50%);
+      width:80px;
+      height:2px;
+      background: linear-gradient(90deg, #60a5fa, #22d3ee);
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+    }
+    .company-name {
+      font-size:20px; /* 减小字体 */
+      font-weight:600;
+      color:#1e293b;
+      line-height:1.2;
+      margin-bottom:4px; /* 减小底部间距 */
+      letter-spacing:0.8px;
+      text-shadow: 0 0 5px rgba(59, 130, 246, 0.1);
+    }
+    .tool-name {
+      font-size:14px; /* 减小字体 */
+      color:#3b82f6;
+      font-weight:400;
+      opacity:1;
+      letter-spacing:0.5px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    /* 分类按钮：减小间距和内边距 */
+    .category-switch {
+      display:flex;
+      justify-content:center;
+      margin:0 0 16px; /* 大幅减小底部外边距 */
+      gap:12px; /* 减小按钮间距 */
+    }
+    .category-btn {
+      padding:8px 18px; /* 减小按钮内边距 */
+      border:1px solid rgba(59, 130, 246, 0.3);
+      border-radius:50px;
+      background:rgba(255, 255, 255, 0.8);
+      color:#475569;
+      font-size:13px; /* 减小字体 */
+      font-weight:500;
+      cursor:pointer;
+      transition:all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position:relative;
+      overflow:hidden;
+    }
+    .category-btn::before {
+      content: '';
+      position:absolute;
+      top:0;
+      left:-100%;
+      width:100%;
+      height:100%;
+      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.15), transparent);
+      transition: left 0.6s ease;
+    }
+    .category-btn:hover::before {
+      left: 100%;
+    }
+    .category-btn[data-category="pneumatic"].active {
+      background:linear-gradient(135deg, #3b82f6, #60a5fa);
+      color:#ffffff;
+      border-color: #93c5fd;
+      box-shadow: 
+        0 0 20px rgba(59, 130, 246, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+    .category-btn[data-category="hydraulic"].active {
+      background:linear-gradient(135deg, #fb923c, #fdba74);
+      color:#ffffff;
+      border-color: #fdba74;
+      box-shadow: 
+        0 0 20px rgba(249, 115, 22, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+    .category-btn:hover:not(.active) {
+      background:rgba(255, 255, 255, 1);
+      color:#3b82f6;
+      border-color: rgba(59, 130, 246, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.1);
+    }
+    /* 表单区域：减小底部间距 */
+    .form-wrapper {
+      flex:1;
+      margin-bottom:16px; /* 大幅减小底部外边距 */
+    }
+    /* 表单项：减小内边距和间距 */
+    .form-item {
+      display:flex;
+      align-items:center;
+      margin-bottom:10px; /* 大幅减小表单项间距 */
+      padding:12px 14px; /* 减小表单项内边距 */
+      background: rgba(255, 255, 255, 0.8);
+      border-radius:14px; /* 轻微减小圆角 */
+      transition:all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+    .form-item:hover {
+      transform:translateY(-2px);
+      box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.08),
+        0 0 15px rgba(59, 130, 246, 0.1);
+      border-color: rgba(59, 130, 246, 0.3);
+    }
+    .label {
+      width:75px; /* 减小标签宽度 */
+      font-size:13px; /* 减小字体 */
+      color:#1e293b;
+      font-weight:500;
+      flex-shrink:0;
+      letter-spacing:0.3px;
+    }
+    .custom-select {
+      position:relative;
+      flex:1;
+    }
+    select {
+      width:100%;
+      padding:10px 16px; /* 减小下拉框内边距 */
+      border:1px solid rgba(59, 130, 246, 0.3);
+      border-radius:12px; /* 轻微减小圆角 */
+      font-size:13px; /* 减小字体 */
+      color:#1e293b;
+      background:rgba(255, 255, 255, 0.95);
+      transition:all 0.3s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      letter-spacing:0.3px;
+    }
+    select:focus {
+      outline:none;
+      border-color:#60a5fa;
+      box-shadow:0 0 0 4px rgba(59, 130, 246, 0.1), 0 0 15px rgba(59, 130, 246, 0.1);
+      background:#ffffff;
+    }
+    select:hover {
+      border-color:rgba(59, 130, 246, 0.4);
+    }
+    select option {
+      background: #ffffff;
+      color: #1e293b;
+      padding: 8px; /* 减小选项内边距 */
+      border: 1px solid rgba(59, 130, 246, 0.1);
+    }
+    .select-arrow {
+      position: absolute;
+      right: 16px; /* 调整箭头位置 */
+      top: 50%;
+      transform: translateY(-50%);
+      color: #3b82f6;
+      font-size: 11px; /* 减小箭头大小 */
+      pointer-events: none;
+      transition: all 0.3s ease;
+      text-shadow: 0 0 5px rgba(59, 130, 246, 0.2);
+    }
+    .custom-select:hover .select-arrow {
+      color: #2563eb;
+      transform: translateY(-50%) scale(1.1);
+    }
+    /* 结果区域：减小内边距和间距 */
+    .result {
+      margin-top:0;
+      padding:18px 16px; /* 大幅减小结果区域内边距 */
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95));
+      border-radius:18px; /* 轻微减小圆角 */
+      text-align:center;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.08),
+        0 0 20px rgba(59, 130, 246, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      position:relative;
+      overflow:hidden;
+      margin-bottom:12px; /* 减小底部间距 */
+    }
+    .result::before {
+      content: '';
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:3px; /* 减小顶部光条高度 */
+      background: linear-gradient(90deg, #60a5fa, #22d3ee, #60a5fa);
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+    }
+    .result::after {
+      content: '';
+      position:absolute;
+      top: 50%;
+      left: 50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .result-label {
+      font-size:15px; /* 减小字体 */
+      color:#3b82f6;
+      font-weight:500;
+      letter-spacing:0.5px;
+      opacity:1;
+      display: block;
+      margin-bottom: 4px; /* 减小底部间距 */
+    }
+    .final-model {
+      font-size:18px; /* 减小字体 */
+      font-weight:600;
+      color: #0891b2;
+      margin: 8px 0; /* 大幅减小上下间距 */
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(8, 145, 178, 0.2);
+    }
+    .price {
+      font-size:28px; /* 减小价格字体 */
+      font-weight:700;
+      color: #dc2626;
+      margin:6px 0 8px; /* 大幅减小上下间距 */
+      letter-spacing:1px;
+      display:inline-block;
+      position:relative;
+      text-shadow: 0 0 15px rgba(220, 38, 38, 0.2);
+    }
+    .price::after {
+      content: '';
+      position:absolute;
+      bottom:-6px; /* 调整下划线位置 */
+      left:50%;
+      transform:translateX(-50%) scaleX(0);
+      width:80%;
+      height:2px;
+      background: linear-gradient(90deg, rgba(220, 38, 38, 0.2), rgba(220, 38, 38, 0.4));
+      border-radius:1px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 8px rgba(220, 38, 38, 0.2);
+    }
+    .price:hover::after {
+      transform:translateX(-50%) scaleX(1);
+    }
+    .note {
+      font-size:11px; /* 减小备注字体 */
+      color:#475569;
+      display:block;
+      margin-top:6px; /* 减小顶部间距 */
+      line-height:1.4; /* 减小行高 */
+      letter-spacing:0.2px;
+      opacity:0.9;
+    }
+    .inner-tip {
+      text-align:center;
+      font-size:11px; /* 减小提示字体 */
+      color:#64748b;
+      font-weight:400;
+      margin-top:0;
+      padding-top:10px; /* 减小顶部内边距 */
+      border-top:1px dashed rgba(59, 130, 246, 0.2);
+      letter-spacing:0.3px;
+    }
+    .hidden {display:none!important;}
+
+    @keyframes countUp {
+      from { opacity: 0.3; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .price-update {
+      animation: countUp 0.6s ease-out;
+    }
+    
+    @keyframes modelFadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .model-update {
+      animation: modelFadeIn 0.4s ease-out;
+    }
+    
+    @keyframes pulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+    .price.loading, .final-model.loading {
+      animation: pulse 1s infinite;
+      color: #3b82f6;
+    }
+
+    /* 移动端适配：进一步优化紧凑度 */
+    @media (max-width: 375px) {
+      .container {
+        padding:12px 14px; /* 进一步减小容器内边距 */
+        min-height:calc(100vh - 16px);
+        border-radius: 16px;
+      }
+      .form-item {
+        padding:10px 12px; /* 进一步减小表单项内边距 */
+        margin-bottom:8px; /* 进一步减小表单项间距 */
+      }
+      .label {
+        width:70px; /* 进一步减小标签宽度 */
+        font-size:12px; /* 进一步减小标签字体 */
+      }
+      select {
+        padding:8px 14px; /* 进一步减小下拉框内边距 */
+        font-size:12px; /* 进一步减小下拉框字体 */
+      }
+      .price {
+        font-size:24px; /* 进一步减小价格字体 */
+      }
+      .final-model {
+        font-size:16px; /* 进一步减小型号字体 */
+      }
+      .category-btn {
+        padding:6px 14px; /* 进一步减小按钮内边距 */
+        font-size:12px; /* 进一步减小按钮字体 */
+      }
+      .company-name {
+        font-size:18px; /* 进一步减小公司名称字体 */
+      }
+      .tool-name {
+        font-size:12px; /* 进一步减小工具名称字体 */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="company-name">无锡科振自控阀门有限公司</div>
+      <div class="tool-name">执行器报价助手</div>
+    </div>
+    <div class="category-switch">
+      <button class="category-btn active" data-category="pneumatic">气动执行器</button>
+      <button class="category-btn" data-category="hydraulic">液压执行器</button>
+    </div>
+    <div class="form-wrapper">
+      <div class="form-item">
+        <label class="label">型号：</label>
+        <div class="custom-select">
+          <select id="modelSelect"></select>
+          <div class="select-arrow">▼</div>
+        </div>
+      </div>
+      <div class="form-item">
+        <label class="label">材质：</label>
+        <div class="custom-select">
+          <select id="materialSelect">
+            <option value="ss304">SS304</option>
+            <option value="ss316">SS316</option>
+            <option value="ss316l">316L</option>
+          </select>
+          <div class="select-arrow">▼</div>
+        </div>
+      </div>
+      <div class="form-item" id="typeGroup">
+        <label class="label">类型：</label>
+        <div class="custom-select">
+          <select id="typeSelect">
+            <option value="double">双作用</option>
+            <option value="single">单作用（含弹簧）</option>
+          </select>
+          <div class="select-arrow">▼</div>
+        </div>
+      </div>
+      <div class="form-item hidden" id="springCountGroup">
+        <label class="label">弹簧数量：</label>
+        <div class="custom-select">
+          <select id="springCountSelect"></select>
+          <div class="select-arrow">▼</div>
+        </div>
+      </div>
+      <div class="form-item">
+        <label class="label">折扣：</label>
+        <div class="custom-select">
+          <select id="discountSelect">
+            <option value="1.00" selected>原价（不打折）</option>
+            <option value="0.99">99折</option><option value="0.98">98折</option><option value="0.97">97折</option>
+            <option value="0.96">96折</option><option value="0.95">95折</option><option value="0.94">94折</option>
+            <option value="0.93">93折</option><option value="0.92">92折</option><option value="0.91">91折</option>
+            <option value="0.90">90折</option><option value="0.89">89折</option><option value="0.88">88折</option>
+            <option value="0.87">87折</option><option value="0.86">86折</option><option value="0.85">85折</option>
+          </select>
+          <div class="select-arrow">▼</div>
+        </div>
+      </div>
+    </div>
+    <div class="result">
+      <span class="result-label">最终型号：</span>
+      <span class="final-model" id="finalModel">KZ-45DA</span>
+      <span class="result-label">最终总价：</span>
+      <span class="price" id="totalPrice">¥589 元</span>
+      <span class="note">含13%增值税；316L=SS316×1.05取整；单作用弹簧按型号定价</span>
+    </div>
+    <div class="inner-tip">仅供无锡科振自控阀门有限公司内部使用</div>
+  </div>
+
+  <script>
+    const productData = {
+      pneumatic: {
+        bodyPrice: {
+          ss304: {"KZ-45":589,"KZ-52":669,"KZ-63":815,"KZ-75":1023,"KZ-83":1076,"KZ-92":1480,"KZ-105":1659,"KZ-125":2475,"KZ-140":3834,"KZ-160":4802,"KZ-190":10780,"KZ-210":12502,"KZ-240":25850,"KZ-270":36938,"KZ-300":42350,"KZ-350":67500,"KZ-400":85800},
+          ss316: {"KZ-45":622,"KZ-52":699,"KZ-63":876,"KZ-75":1084,"KZ-83":1150,"KZ-92":1518,"KZ-105":1791,"KZ-125":2662,"KZ-140":3991,"KZ-160":5187,"KZ-190":11880,"KZ-210":13057,"KZ-240":28050,"KZ-270":40150,"KZ-300":45980,"KZ-350":71600,"KZ-400":92950}
+        },
+        springUnitPrice: {
+          "KZ-45":2.5,"KZ-52":3,"KZ-63":4,"KZ-75":5.5,"KZ-83":6,"KZ-92":8,"KZ-105":11,
+          "KZ-125":15,"KZ-140":23,"KZ-160":38,"KZ-190":55,"KZ-210":65,"KZ-240":80,
+          "KZ-270":95,"KZ-300":110,"KZ-350":135,"KZ-400":160
+        },
+        springMaxCount: {
+          "KZ-45":4,"KZ-52":12,"KZ-63":12,"KZ-75":12,"KZ-83":12,"KZ-92":12,"KZ-105":12,
+          "KZ-125":12,"KZ-140":12,"KZ-160":12,"KZ-190":12,"KZ-210":12,"KZ-240":12,
+          "KZ-270":12,"KZ-300":12,"KZ-350":12,"KZ-400":16
+        }
+      },
+      hydraulic: {
+        bodyPrice: {
+          ss304: {
+            "HD120": 2970,"HD350": 3260,"HD700": 4080,"HD1400": 5480,"HD3000": 6990,"HD5000": 7770,"HD10K": 14660
+          },
+          ss316: {
+            "HD120": 3080,"HD350": 3430,"HD700": 4330,"HD1400": 5940,"HD3000": 7640,"HD5000": 9020,"HD10K": 16040
+          }
+        },
+        springUnitPrice: {},
+        springMaxCount: {}
+      }
+    };
+
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const modelSelect = document.getElementById('modelSelect');
+    const materialSelect = document.getElementById('materialSelect');
+    const typeSelect = document.getElementById('typeSelect');
+    const typeGroup = document.getElementById('typeGroup');
+    const springCountGroup = document.getElementById('springCountGroup');
+    const springCountSelect = document.getElementById('springCountSelect');
+    const discountSelect = document.getElementById('discountSelect');
+    const totalPriceEl = document.getElementById('totalPrice');
+    const finalModelEl = document.getElementById('finalModel');
+
+    let currentCategory = 'pneumatic';
+
+    function initSpringCountSelect(model) {
+      springCountSelect.innerHTML = '';
+      const maxCount = productData.pneumatic.springMaxCount[model] || 12;
+      for (let i = 1; i <= maxCount; i++) {
+        const option = document.createElement('option');
+        option.value = i;
+        option.textContent = i;
+        if (i === 1) option.selected = true;
+        springCountSelect.appendChild(option);
+      }
+    }
+
+    function initModelSelect(category) {
+      modelSelect.innerHTML = '';
+      const models = Object.keys(productData[category].bodyPrice.ss304);
+      models.forEach(model => {
+        const option = document.createElement('option');
+        option.value = model;
+        option.textContent = model;
+        if (model === (category === 'pneumatic' ? 'KZ-45' : 'HD120')) {
+          option.selected = true;
+        }
+        modelSelect.appendChild(option);
+      });
+
+      if (category === 'hydraulic') {
+        typeGroup.classList.add('hidden');
+        springCountGroup.classList.add('hidden');
+      } else {
+        typeGroup.classList.remove('hidden');
+        if (typeSelect.value === 'double') {
+          springCountGroup.classList.add('hidden');
+        } else {
+          initSpringCountSelect(modelSelect.value);
+          springCountGroup.classList.remove('hidden');
+        }
+      }
+    }
+
+    modelSelect.addEventListener('change', function() {
+      if (currentCategory === 'pneumatic' && typeSelect.value === 'single') {
+        initSpringCountSelect(this.value);
+      }
+    });
+
+    function generateFinalModel() {
+      const baseModel = modelSelect.value;
+      const type = currentCategory === 'pneumatic' ? typeSelect.value : 'double';
+      const springCount = parseInt(springCountSelect.value) || 1;
+      
+      let finalModel = baseModel;
+      
+      if (currentCategory === 'pneumatic') {
+        if (type === 'double') {
+          finalModel += 'DA';
+        } else {
+          finalModel += `K${springCount}`;
+        }
+      } else {
+        finalModel += 'DA';
+      }
+      
+      return finalModel;
+    }
+
+    function updateFinalModelWithAnimation() {
+      finalModelEl.classList.remove('model-update');
+      void finalModelEl.offsetWidth;
+      finalModelEl.classList.add('model-update');
+      finalModelEl.textContent = generateFinalModel();
+    }
+
+    function updatePriceWithAnimation(finalPrice) {
+      totalPriceEl.classList.remove('loading');
+      finalModelEl.classList.remove('loading');
+      totalPriceEl.classList.add('price-update');
+      totalPriceEl.textContent = `¥${finalPrice} 元`;
+      updateFinalModelWithAnimation();
+      setTimeout(() => {
+        totalPriceEl.classList.remove('price-update');
+      }, 600);
+    }
+
+    function calculatePrice() {
+      totalPriceEl.textContent = '计算中...';
+      finalModelEl.textContent = '生成中...';
+      totalPriceEl.classList.add('loading');
+      finalModelEl.classList.add('loading');
+      
+      setTimeout(() => {
+        const material = materialSelect.value;
+        const model = modelSelect.value;
+        const type = currentCategory === 'pneumatic' ? typeSelect.value : 'double';
+        const springCount = parseInt(springCountSelect.value) || 1;
+        const discount = parseFloat(discountSelect.value);
+
+        let basePrice;
+        if (material === 'ss316l') {
+          basePrice = Math.round(productData[currentCategory].bodyPrice.ss316[model] * 1.05);
+        } else {
+          basePrice = productData[currentCategory].bodyPrice[material][model];
+        }
+
+        let totalBasePrice = basePrice;
+        if (currentCategory === 'pneumatic' && type === 'single') {
+          const springUnitPrice = productData[currentCategory].springUnitPrice[model];
+          totalBasePrice += Math.round(springCount * springUnitPrice);
+        }
+
+        const finalPrice = Math.round(totalBasePrice * discount);
+        updatePriceWithAnimation(finalPrice);
+      }, 150);
+    }
+
+    function debounce(fn, delay = 150) {
+      let timer = null;
+      return function(...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          fn.apply(this, args);
+        }, delay);
+      };
+    }
+
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        currentCategory = this.dataset.category;
+        initModelSelect(currentCategory);
+        calculatePrice();
+      });
+    });
+
+    typeSelect.addEventListener('change', function() {
+      if (currentCategory === 'pneumatic') {
+        if (this.value === 'single') {
+          initSpringCountSelect(modelSelect.value);
+          springCountGroup.classList.remove('hidden');
+        } else {
+          springCountGroup.classList.add('hidden');
+        }
+        calculatePrice();
+      }
+    });
+
+    modelSelect.addEventListener('change', debounce(calculatePrice));
+    materialSelect.addEventListener('change', debounce(calculatePrice));
+    springCountSelect.addEventListener('change', debounce(calculatePrice));
+    discountSelect.addEventListener('change', debounce(calculatePrice));
+
+    window.addEventListener('load', function() {
+      initModelSelect(currentCategory);
+      calculatePrice();
+    });
+  </script>
+</body>
+</html>
